@@ -27,7 +27,7 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
             default = runtime.config.poetry2nix.poetry2nixLib.mkPoetryApplication runtime.config.poetryApplicationArgs;
           };
           config.devenvShellModule.packages = lib.mkIf (builtins.pathExists "${flakeModule.self}/poetry.lock") [
-            runtime.config.poetryApplication
+            runtime.config.poetryApplication.dependencyEnv
           ];
         };
       });
