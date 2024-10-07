@@ -14,11 +14,9 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
         nixago.requests = {
           ".vscode/settings.json".data = {
             "nix.enableLanguageServer" = true;
-            "nix.serverPath" = lib.getExe pkgs.nil;
+            "nix.serverPath" = "nil";
             "nix.serverSettings" = {
-              nil.formatting.command = lib.mkForce [
-                (lib.getExe pkgs.nixpkgs-fmt)
-              ];
+              nil.formatting.command = lib.mkForce ["nixpkgs-fmt"];
             };
           };
           ".vscode/extensions.json".data = {
@@ -28,6 +26,10 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
           };
         };
         devenvShellModule = {
+          packages = [
+            pkgs.nil
+            pkgs.nixpkgs-fmt 
+          ];
           languages.nix.enable = true;
         };
       };
