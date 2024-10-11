@@ -280,7 +280,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                         type = lib.types.str;
                                       };
                                     };
-                                    
+
                                     spec = lib.mkOption {
                                       type = lib.types.attrsOf lib.types.anything;
                                     };
@@ -327,7 +327,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                         type = lib.types.str;
                                       };
                                     };
-                              
+
                                     spec.volumeName = lib.mkOption {
                                       type = lib.types.str;
                                     };
