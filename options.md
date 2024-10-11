@@ -120,6 +120,7 @@ module
  - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
  - [devenv-python-with-libstdc++\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devenvPythonWithLibstdcxx](flake-modules/devenv-python-with-libstdc++.nix)
  - [devcontainer-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainerPoetry](flake-modules/devcontainer-poetry.nix)
+ - [devcontainer-nixos-rebuild\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainerNixosRebuild](flake-modules/devcontainer-nixos-rebuild.nix)
  - [devcontainer-nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainerNix](flake-modules/devcontainer-nix.nix)
  - [devcontainer-gcp-cli-tools\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainerGcpCliTools](flake-modules/devcontainer-gcp-cli-tools.nix)
  - [devcontainer-azure-cli-tools\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainerAzureCliTools](flake-modules/devcontainer-azure-cli-tools.nix)
@@ -579,7 +580,7 @@ path
 
 
 *Default:*
-` "/nix/store/l4lmlsn4jjrqs667sfar12b8bidwqav7-ld-fallback-path/lib" `
+` "/nix/store/j8dh86h5nfhm58ynbm29i2jfsq6zhq3d-ld-fallback-path/lib" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -668,7 +669,7 @@ The list of paths to be added to the ` NIX_LD_LIBRARY_PATH ` environment variabl
 
 This option should always be kept empty\. Set ` flakeModules.ldFallback.libraries ` instead when you want any non-empty library path\. See discussion at https://github\.com/NixOS/nixpkgs/pull/248547\#issuecomment-1995469926 about why nix-ld is not a good idea for libraries used in a project\.
 
-Note that ` nix-ld-rs ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld ` or ` nix-ld-rs `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
+Note that ` nix-ld ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
 
 
 
@@ -831,7 +832,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.11.9> `
+` <derivation python3-3.12.5> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -3219,7 +3220,7 @@ path
 
 
 *Default:*
-` "/nix/store/l4lmlsn4jjrqs667sfar12b8bidwqav7-ld-fallback-path/lib" `
+` "/nix/store/j8dh86h5nfhm58ynbm29i2jfsq6zhq3d-ld-fallback-path/lib" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -3276,7 +3277,7 @@ The list of paths to be added to the ` NIX_LD_LIBRARY_PATH ` environment variabl
 
 This option should always be kept empty\. Set ` flakeModules.ldFallback.libraries ` instead when you want any non-empty library path\. See discussion at https://github\.com/NixOS/nixpkgs/pull/248547\#issuecomment-1995469926 about why nix-ld is not a good idea for libraries used in a project\.
 
-Note that ` nix-ld-rs ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld ` or ` nix-ld-rs `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
+Note that ` nix-ld ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
 
 
 
@@ -3402,7 +3403,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.11.9> `
+` <derivation python3-3.12.5> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -3451,6 +3452,27 @@ attribute set of anything
 
 
 
+## perSystem\.ml-ops\.jobs\.\<name>\.poetryApplicationDependencyEnv
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+package
+
+
+
+*Default:*
+` poetryApplication.dependencyEnv.override { ignoreCollisions = true; } `
+
+*Declared by:*
+ - [poetry2nix-application\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nixApplication, via option perSystem\.ml-ops\.runtime](flake-modules/poetry2nix-application.nix)
+
+
+
 ## perSystem\.ml-ops\.jobs\.\<name>\.poetryEnv
 
 
@@ -3465,7 +3487,7 @@ package
 
 
 *Default:*
-` <derivation python3-3.11.9-env> `
+` <derivation python3-3.12.5-env> `
 
 *Declared by:*
  - [python-envs-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
@@ -4167,8 +4189,6 @@ attribute set of string
 
 ## perSystem\.ml-ops\.runtime\.ldFallback\.enablelogging
 
-
-
 Whether to enable logging\.
 
 
@@ -4192,6 +4212,8 @@ boolean
 
 
 ## perSystem\.ml-ops\.runtime\.ldFallback\.libaudit
+
+
 
 This option has no description\.
 
@@ -4240,7 +4262,7 @@ path
 
 
 *Default:*
-` "/nix/store/l4lmlsn4jjrqs667sfar12b8bidwqav7-ld-fallback-path/lib" `
+` "/nix/store/j8dh86h5nfhm58ynbm29i2jfsq6zhq3d-ld-fallback-path/lib" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -4297,7 +4319,7 @@ The list of paths to be added to the ` NIX_LD_LIBRARY_PATH ` environment variabl
 
 This option should always be kept empty\. Set ` flakeModules.ldFallback.libraries ` instead when you want any non-empty library path\. See discussion at https://github\.com/NixOS/nixpkgs/pull/248547\#issuecomment-1995469926 about why nix-ld is not a good idea for libraries used in a project\.
 
-Note that ` nix-ld-rs ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld ` or ` nix-ld-rs `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
+Note that ` nix-ld ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
 
 
 
@@ -4423,7 +4445,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.11.9> `
+` <derivation python3-3.12.5> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -5468,6 +5490,11 @@ This option has no description\.
 *Type:*
 attribute set of attribute set of anything
 
+
+
+*Default:*
+` { } `
+
 *Declared by:*
  - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
@@ -6266,8 +6293,6 @@ unspecified value
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests\.\<name>\.kind
 
-
-
 This option has no description\.
 
 
@@ -6286,6 +6311,8 @@ unspecified value
 
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests\.\<name>\.metadata\.name
+
+
 
 This option has no description\.
 
@@ -6740,7 +6767,7 @@ path
 
 
 *Default:*
-` "/nix/store/l4lmlsn4jjrqs667sfar12b8bidwqav7-ld-fallback-path/lib" `
+` "/nix/store/j8dh86h5nfhm58ynbm29i2jfsq6zhq3d-ld-fallback-path/lib" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -6797,7 +6824,7 @@ The list of paths to be added to the ` NIX_LD_LIBRARY_PATH ` environment variabl
 
 This option should always be kept empty\. Set ` flakeModules.ldFallback.libraries ` instead when you want any non-empty library path\. See discussion at https://github\.com/NixOS/nixpkgs/pull/248547\#issuecomment-1995469926 about why nix-ld is not a good idea for libraries used in a project\.
 
-Note that ` nix-ld-rs ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld ` or ` nix-ld-rs `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
+Note that ` nix-ld ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
 
 
 
@@ -6923,7 +6950,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.11.9> `
+` <derivation python3-3.12.5> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -6972,6 +6999,27 @@ attribute set of anything
 
 
 
+## perSystem\.ml-ops\.services\.\<name>\.poetryApplicationDependencyEnv
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+package
+
+
+
+*Default:*
+` poetryApplication.dependencyEnv.override { ignoreCollisions = true; } `
+
+*Declared by:*
+ - [poetry2nix-application\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nixApplication, via option perSystem\.ml-ops\.runtime](flake-modules/poetry2nix-application.nix)
+
+
+
 ## perSystem\.ml-ops\.services\.\<name>\.poetryEnv
 
 
@@ -6986,7 +7034,7 @@ package
 
 
 *Default:*
-` <derivation python3-3.11.9-env> `
+` <derivation python3-3.12.5-env> `
 
 *Declared by:*
  - [python-envs-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
