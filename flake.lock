@@ -591,11 +591,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722650779,
-        "narHash": "sha256-PgVOPj7dQcYBE3Ab0axqxDHUoMtaRxYWDKzHzHBn/s0=",
+        "lastModified": 1728699199,
+        "narHash": "sha256-4pWnXLl2jrsxuB7hRZPAjg3Ljx1X6rUog4WAGmFkOM0=",
         "owner": "Atry",
         "repo": "nix-gl-host",
-        "rev": "3f99656f3ddc1f81b368628873f48b2dd1a4c8ad",
+        "rev": "481db640586f5df2a858131e0f64ebb0cbd83371",
         "type": "github"
       },
       "original": {
