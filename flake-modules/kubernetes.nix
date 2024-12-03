@@ -218,8 +218,6 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                         (lib.getExe perSystem.config.packages.skopeo-nix2container)
                                         "--insecure-policy"
                                         "copy"
-                                        "--image-parallel-copies"
-                                        "64"
                                       ]} \
                                       ${
                                         lib.escapeShellArgs pushImage.config.skopeoCopyArgs
