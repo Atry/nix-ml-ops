@@ -2653,6 +2653,27 @@ package
 
 
 
+## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmUpgrade\.extraFlags
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+strings concatenated with " "
+
+
+
+*Default:*
+` "" `
+
+*Declared by:*
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmUpgrade\.overridden-package
 
 
@@ -4216,8 +4237,6 @@ package
 
 ## perSystem\.ml-ops\.runtime\.devenvShellModule
 
-
-
 Common config that will be copied to ` config.devenv.shells. `*\<shell_name>*` .config ` for each shell\.
 
 See [devenv options](https://devenv\.sh/reference/options/) for supported nested options\.
@@ -4238,6 +4257,8 @@ module
 
 
 ## perSystem\.ml-ops\.runtime\.environmentVariables
+
+
 
 Environment variables for either devcontainer, jobs or services\.
 
@@ -6297,6 +6318,27 @@ package
 
 
 
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmUpgrade\.extraFlags
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+strings concatenated with " "
+
+
+
+*Default:*
+` "" `
+
+*Declared by:*
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmUpgrade\.overridden-package
 
 
@@ -6319,8 +6361,6 @@ applied ` base-package ` with ` pipe `
 
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmUpgrade\.pipe
-
-
 
 This option has no description\.
 
@@ -6361,6 +6401,8 @@ string
 
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.imageRegistry\.path
+
+
 
 This option has no description\.
 

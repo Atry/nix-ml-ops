@@ -384,25 +384,32 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                           default = { };
                           type = lib.types.submoduleWith {
                             modules = [
-                              {
+                              (helmUpgrade: {
                                 imports = [ perSystem.config.ml-ops.overridablePackage ];
+                                options.extraFlags = lib.mkOption {
+                                  type = lib.types.separatedString " ";
+                                  default = "";
+                                };
                                 config.base-package = pkgs.writeShellScriptBin
                                   "${runtime.config._module.args.name}-helm-upgrade.sh"
                                   ''
                                     ${
                                       (lib.escapeShellArg (lib.getExe kubernetes.config.pushImage.overridden-package))
                                     } && ${
-                                      (lib.escapeShellArgs [
+                                      lib.escapeShellArgs [
                                         (lib.getExe pkgs.kubernetes-helm)
                                         "upgrade"
                                         "--install"
                                         "--force"
+                                      ]
+                                    } ${helmUpgrade.config.extraFlags} ${
+                                      lib.escapeShellArgs [
                                         kubernetes.config.helmReleaseName
                                         kubernetes.config.helm-chart
-                                      ])
+                                      ]
                                     }
                                   '';
-                              }
+                              })
                             ];
                           };
                         };
