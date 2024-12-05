@@ -382,6 +382,43 @@ This option has no description\.
 *Type:*
 list of package
 
+
+
+*Default:*
+
+```
+[
+  pkgs.cudaPackages.cuda_nvcc
+  pkgs.cudaPackages.cudatoolkit
+  pkgs.cudaPackages.cuda_cudart.lib
+  pkgs.cudaPackages.libcublas
+  pkgs.cudaPackages.nccl
+  pkgs.cudaPackages.cudnn
+]
+
+```
+
+*Declared by:*
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
+
+
+
+## perSystem\.ml-ops\.devcontainer\.cuda\.cudaPackages
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of package
+
+
+
+*Default:*
+` pkgs.cudaPackages `
+
 *Declared by:*
  - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
 
@@ -1445,6 +1482,43 @@ This option has no description\.
 *Type:*
 list of package
 
+
+
+*Default:*
+
+```
+[
+  pkgs.cudaPackages.cuda_nvcc
+  pkgs.cudaPackages.cudatoolkit
+  pkgs.cudaPackages.cuda_cudart.lib
+  pkgs.cudaPackages.libcublas
+  pkgs.cudaPackages.nccl
+  pkgs.cudaPackages.cudnn
+]
+
+```
+
+*Declared by:*
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.cuda\.cudaPackages
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of package
+
+
+
+*Default:*
+` pkgs.cudaPackages `
+
 *Declared by:*
  - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
 
@@ -2040,8 +2114,6 @@ package
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmDelete\.overridden-package
 
-
-
 This option has no description\.
 
 
@@ -2081,6 +2153,8 @@ list of function that evaluates to a(n) package
 
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmReleaseName
+
+
 
 This option has no description\.
 
@@ -4077,6 +4151,43 @@ This option has no description\.
 *Type:*
 list of package
 
+
+
+*Default:*
+
+```
+[
+  pkgs.cudaPackages.cuda_nvcc
+  pkgs.cudaPackages.cudatoolkit
+  pkgs.cudaPackages.cuda_cudart.lib
+  pkgs.cudaPackages.libcublas
+  pkgs.cudaPackages.nccl
+  pkgs.cudaPackages.cudnn
+]
+
+```
+
+*Declared by:*
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
+
+
+
+## perSystem\.ml-ops\.runtime\.cuda\.cudaPackages
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of package
+
+
+
+*Default:*
+` pkgs.cudaPackages `
+
 *Declared by:*
  - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
 
@@ -4127,8 +4238,6 @@ module
 
 
 ## perSystem\.ml-ops\.runtime\.environmentVariables
-
-
 
 Environment variables for either devcontainer, jobs or services\.
 
@@ -4188,6 +4297,8 @@ attribute set of string
 
 
 ## perSystem\.ml-ops\.runtime\.ldFallback\.enablelogging
+
+
 
 Whether to enable logging\.
 
@@ -4798,6 +4909,43 @@ This option has no description\.
 
 *Type:*
 list of package
+
+
+
+*Default:*
+
+```
+[
+  pkgs.cudaPackages.cuda_nvcc
+  pkgs.cudaPackages.cudatoolkit
+  pkgs.cudaPackages.cuda_cudart.lib
+  pkgs.cudaPackages.libcublas
+  pkgs.cudaPackages.nccl
+  pkgs.cudaPackages.cudnn
+]
+
+```
+
+*Declared by:*
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.cuda\.cudaPackages
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of package
+
+
+
+*Default:*
+` pkgs.cudaPackages `
 
 *Declared by:*
  - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
@@ -6214,8 +6362,6 @@ string
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.imageRegistry\.path
 
-
-
 This option has no description\.
 
 
@@ -6292,6 +6438,8 @@ unspecified value
 
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests\.\<name>\.kind
+
+
 
 This option has no description\.
 
