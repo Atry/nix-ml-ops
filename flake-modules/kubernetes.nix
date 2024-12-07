@@ -399,6 +399,8 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                       lib.escapeShellArgs [
                                         (lib.getExe pkgs.kubernetes-helm)
                                         "upgrade"
+                                        "--namespace"
+                                        kubernetes.config.namespace
                                         "--install"
                                         "--force"
                                       ]
@@ -424,6 +426,8 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                   (lib.escapeShellArgs [
                                     (lib.getExe pkgs.kubernetes-helm)
                                     "uninstall"
+                                    "--namespace"
+                                    kubernetes.config.namespace
                                     "--keep-history"
                                     "--cascade"
                                     "foreground"
@@ -444,6 +448,8 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                   (lib.escapeShellArgs [
                                     (lib.getExe pkgs.kubernetes-helm)
                                     "delete"
+                                    "--namespace"
+                                    kubernetes.config.namespace
                                     "--cascade"
                                     "foreground"
                                     kubernetes.config.helmReleaseName
