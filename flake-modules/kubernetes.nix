@@ -56,15 +56,6 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
       };
       perSystem = flake-parts-lib.mkPerSystemOption (
         perSystem@{ pkgs, system, inputs', ... }: {
-          packages.skopeo-nix2container = inputs'.nix2container.packages.skopeo-nix2container.overrideAttrs (old: {
-            patches = old.patches or [ ] ++ [
-              (pkgs.fetchpatch {
-                # Add --image-parallel-copies flag
-                url = "https://github.com/Atry/skopeo/commit/db8701ceb6c88da8def345d539e67c27e026a04b.patch";
-                hash = "sha256-VTG/uf2yw+AiGHgyjKHkrFoEO+0Ne9wtjICmBomTHss=";
-              })
-            ];
-          });
           ml-ops.runtime = runtime: {
             config.launcher = launcher: {
               options.kubernetes = lib.mkOption {
@@ -215,7 +206,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                     ''
                                       read -a skopeoCopyArgsArray <<< "$SKOPEO_ARGS"
                                       ${lib.escapeShellArgs [
-                                        (lib.getExe perSystem.config.packages.skopeo-nix2container)
+                                        (lib.getExe inputs'.nix2container.packages.skopeo-nix2container)
                                         "--insecure-policy"
                                         "copy"
                                       ]} \
@@ -468,7 +459,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
           ml-ops.devcontainer.devenvShellModule = {
             packages = [
               pkgs.kubectl
-              perSystem.config.packages.skopeo-nix2container
+              inputs'.nix2container.packages.skopeo-nix2container
             ];
           };
         }
