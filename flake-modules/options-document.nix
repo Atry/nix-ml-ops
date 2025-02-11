@@ -37,7 +37,6 @@ topLevel@{ inputs, lib, flake-parts-lib, ... }: {
               }
           ).options;
           documentType = "none";
-          markdownByDefault = true;
           warningsAreErrors = false;
           transformOptions = option: option // rec {
             declarations = lib.concatMap
