@@ -23,7 +23,7 @@
     # Used by mach-nix, which is not compatible with the latest nixpkgs-unstable
     nixpkgs_22_05.url = "nixpkgs/nixos-22.05";
 
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixos-24.11";
 
     flake-parts.url = "github:Atry/flake-parts/key";
     flake-parts.inputs.nixpkgs-lib.url = "github:nix-community/nixpkgs.lib";
