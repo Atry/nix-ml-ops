@@ -21,7 +21,7 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
         devenvShellModule = {
           packages = [
             pkgs.nil
-            pkgs.nixpkgs-fmt
+            pkgs.nixfmt-rfc-style
           ];
           languages.nix.enable = true;
         };

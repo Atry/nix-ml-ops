@@ -566,6 +566,60 @@ boolean
 
 
 
+## perSystem\.ml-ops\.devcontainer\.ldFallback\.lasmConfig
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+YAML value
+
+
+
+*Default:*
+
+```
+{
+  rules = [
+    {
+      cond = {
+        rtld = "nix";
+      };
+      default = {
+        prepend = [
+          {
+            saved = "libpath";
+          }
+        ];
+      };
+      libpath = {
+        save = true;
+      };
+    }
+    {
+      cond = {
+        rtld = "normal";
+      };
+      default = {
+        prepend = [
+          {
+            dir = "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib";
+          }
+        ];
+      };
+    }
+  ];
+}
+```
+
+*Declared by:*
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
 ## perSystem\.ml-ops\.devcontainer\.ldFallback\.libaudit
 
 
@@ -575,12 +629,12 @@ This option has no description\.
 
 
 *Type:*
-package
+path
 
 
 
 *Default:*
-` <derivation libaudit.so> `
+` "/nix/store/2cnkqwwxnvjnycbxnyh93gfiwysfzw07-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -617,7 +671,28 @@ path
 
 
 *Default:*
-` "/nix/store/j8dh86h5nfhm58ynbm29i2jfsq6zhq3d-ld-fallback-path/lib" `
+` "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib" `
+
+*Declared by:*
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.devcontainer\.ldFallback\.preferRunpathOverLdLibraryPath
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` true `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -869,7 +944,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.12.5> `
+` <derivation python3-3.12.8> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -2072,8 +2147,6 @@ attribute set of anything
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmDelete
 
-
-
 This option has no description\.
 
 
@@ -2113,6 +2186,8 @@ package
 
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmDelete\.overridden-package
+
+
 
 This option has no description\.
 
@@ -3264,6 +3339,60 @@ boolean
 
 
 
+## perSystem\.ml-ops\.jobs\.\<name>\.ldFallback\.lasmConfig
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+YAML value
+
+
+
+*Default:*
+
+```
+{
+  rules = [
+    {
+      cond = {
+        rtld = "nix";
+      };
+      default = {
+        prepend = [
+          {
+            saved = "libpath";
+          }
+        ];
+      };
+      libpath = {
+        save = true;
+      };
+    }
+    {
+      cond = {
+        rtld = "normal";
+      };
+      default = {
+        prepend = [
+          {
+            dir = "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib";
+          }
+        ];
+      };
+    }
+  ];
+}
+```
+
+*Declared by:*
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
 ## perSystem\.ml-ops\.jobs\.\<name>\.ldFallback\.libaudit
 
 
@@ -3273,12 +3402,12 @@ This option has no description\.
 
 
 *Type:*
-package
+path
 
 
 
 *Default:*
-` <derivation libaudit.so> `
+` "/nix/store/2cnkqwwxnvjnycbxnyh93gfiwysfzw07-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -3315,7 +3444,28 @@ path
 
 
 *Default:*
-` "/nix/store/j8dh86h5nfhm58ynbm29i2jfsq6zhq3d-ld-fallback-path/lib" `
+` "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib" `
+
+*Declared by:*
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.ldFallback\.preferRunpathOverLdLibraryPath
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` true `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -3498,7 +3648,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.12.5> `
+` <derivation python3-3.12.8> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -3582,7 +3732,7 @@ package
 
 
 *Default:*
-` <derivation python3-3.12.5-env> `
+` <derivation python3-3.12.8-env> `
 
 *Declared by:*
  - [python-envs-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
@@ -4142,8 +4292,6 @@ module
 
 ## perSystem\.ml-ops\.runtime\.LD_LIBRARY_PATH
 
-
-
 This option has no description\.
 
 
@@ -4236,6 +4384,8 @@ package
 
 
 ## perSystem\.ml-ops\.runtime\.devenvShellModule
+
+
 
 Common config that will be copied to ` config.devenv.shells. `*\<shell_name>*` .config ` for each shell\.
 
@@ -4343,6 +4493,60 @@ boolean
 
 
 
+## perSystem\.ml-ops\.runtime\.ldFallback\.lasmConfig
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+YAML value
+
+
+
+*Default:*
+
+```
+{
+  rules = [
+    {
+      cond = {
+        rtld = "nix";
+      };
+      default = {
+        prepend = [
+          {
+            saved = "libpath";
+          }
+        ];
+      };
+      libpath = {
+        save = true;
+      };
+    }
+    {
+      cond = {
+        rtld = "normal";
+      };
+      default = {
+        prepend = [
+          {
+            dir = "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib";
+          }
+        ];
+      };
+    }
+  ];
+}
+```
+
+*Declared by:*
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
 ## perSystem\.ml-ops\.runtime\.ldFallback\.libaudit
 
 
@@ -4352,12 +4556,12 @@ This option has no description\.
 
 
 *Type:*
-package
+path
 
 
 
 *Default:*
-` <derivation libaudit.so> `
+` "/nix/store/2cnkqwwxnvjnycbxnyh93gfiwysfzw07-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -4394,7 +4598,28 @@ path
 
 
 *Default:*
-` "/nix/store/j8dh86h5nfhm58ynbm29i2jfsq6zhq3d-ld-fallback-path/lib" `
+` "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib" `
+
+*Declared by:*
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.runtime\.ldFallback\.preferRunpathOverLdLibraryPath
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` true `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -4577,7 +4802,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.12.5> `
+` <derivation python3-3.12.8> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -6236,8 +6461,6 @@ package
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmUninstall\.overridden-package
 
-
-
 This option has no description\.
 
 
@@ -6361,6 +6584,8 @@ applied ` base-package ` with ` pipe `
 
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmUpgrade\.pipe
+
+
 
 This option has no description\.
 
@@ -6906,6 +7131,60 @@ boolean
 
 
 
+## perSystem\.ml-ops\.services\.\<name>\.ldFallback\.lasmConfig
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+YAML value
+
+
+
+*Default:*
+
+```
+{
+  rules = [
+    {
+      cond = {
+        rtld = "nix";
+      };
+      default = {
+        prepend = [
+          {
+            saved = "libpath";
+          }
+        ];
+      };
+      libpath = {
+        save = true;
+      };
+    }
+    {
+      cond = {
+        rtld = "normal";
+      };
+      default = {
+        prepend = [
+          {
+            dir = "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib";
+          }
+        ];
+      };
+    }
+  ];
+}
+```
+
+*Declared by:*
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
 ## perSystem\.ml-ops\.services\.\<name>\.ldFallback\.libaudit
 
 
@@ -6915,12 +7194,12 @@ This option has no description\.
 
 
 *Type:*
-package
+path
 
 
 
 *Default:*
-` <derivation libaudit.so> `
+` "/nix/store/2cnkqwwxnvjnycbxnyh93gfiwysfzw07-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -6957,7 +7236,28 @@ path
 
 
 *Default:*
-` "/nix/store/j8dh86h5nfhm58ynbm29i2jfsq6zhq3d-ld-fallback-path/lib" `
+` "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib" `
+
+*Declared by:*
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.ldFallback\.preferRunpathOverLdLibraryPath
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` true `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -7140,7 +7440,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.12.5> `
+` <derivation python3-3.12.8> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -7224,7 +7524,7 @@ package
 
 
 *Default:*
-` <derivation python3-3.12.5-env> `
+` <derivation python3-3.12.8-env> `
 
 *Declared by:*
  - [python-envs-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)

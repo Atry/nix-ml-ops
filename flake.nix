@@ -66,6 +66,7 @@
       url = "github:Atry/nix-gl-host";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lasm.url = "github:DDoSolitary/ld-audit-search-mod";
   };
   outputs = inputs: inputs.flake-parts.lib.mkFlake
     {
