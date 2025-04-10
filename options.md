@@ -116,6 +116,7 @@ module
  - [kubernetes-job\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesJob](flake-modules/kubernetes-job.nix)
  - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes](flake-modules/kubernetes.nix)
  - [jobs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.jobs](flake-modules/jobs.nix)
+ - [glibc-tunables\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.glibcTunables](flake-modules/glibc-tunables.nix)
  - [gke-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.gkeCredential](flake-modules/gke-credential.nix)
  - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
  - [devenv-python-with-libstdc++\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devenvPythonWithLibstdcxx](flake-modules/devenv-python-with-libstdc++.nix)
@@ -524,6 +525,27 @@ list of string
 
 
 
+## perSystem\.ml-ops\.devcontainer\.glibcTunables
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of string
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [glibc-tunables\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.glibcTunables, via option perSystem\.ml-ops\.common](flake-modules/glibc-tunables.nix)
+
+
+
 ## perSystem\.ml-ops\.devcontainer\.inputsGenerator
 
 
@@ -586,29 +608,20 @@ YAML value
   rules = [
     {
       cond = {
-        rtld = "nix";
+        rtld = "any";
       };
       default = {
         prepend = [
           {
             saved = "libpath";
           }
-        ];
-      };
-      libpath = {
-        save = true;
-      };
-    }
-    {
-      cond = {
-        rtld = "normal";
-      };
-      default = {
-        prepend = [
           {
             dir = "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib";
           }
         ];
+      };
+      libpath = {
+        save = true;
       };
     }
   ];
@@ -1667,6 +1680,27 @@ lazy attribute set of string
 
 
 
+## perSystem\.ml-ops\.jobs\.\<name>\.glibcTunables
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of string
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [glibc-tunables\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.glibcTunables, via option perSystem\.ml-ops\.common](flake-modules/glibc-tunables.nix)
+
+
+
 ## perSystem\.ml-ops\.jobs\.\<name>\.launcher
 
 
@@ -2110,8 +2144,6 @@ string
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helm-chart
 
-
-
 This option has no description\.
 
 
@@ -2146,6 +2178,8 @@ attribute set of anything
 
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmDelete
+
+
 
 This option has no description\.
 
@@ -3359,29 +3393,20 @@ YAML value
   rules = [
     {
       cond = {
-        rtld = "nix";
+        rtld = "any";
       };
       default = {
         prepend = [
           {
             saved = "libpath";
           }
-        ];
-      };
-      libpath = {
-        save = true;
-      };
-    }
-    {
-      cond = {
-        rtld = "normal";
-      };
-      default = {
-        prepend = [
           {
             dir = "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib";
           }
         ];
+      };
+      libpath = {
+        save = true;
       };
     }
   ];
@@ -4250,8 +4275,6 @@ applied ` base-package ` with ` pipe `
 
 ## perSystem\.ml-ops\.overridablePackage\.pipe
 
-
-
 This option has no description\.
 
 
@@ -4291,6 +4314,8 @@ module
 
 
 ## perSystem\.ml-ops\.runtime\.LD_LIBRARY_PATH
+
+
 
 This option has no description\.
 
@@ -4430,6 +4455,27 @@ lazy attribute set of string
 
 
 
+## perSystem\.ml-ops\.runtime\.glibcTunables
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of string
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [glibc-tunables\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.glibcTunables, via option perSystem\.ml-ops\.common](flake-modules/glibc-tunables.nix)
+
+
+
 ## perSystem\.ml-ops\.runtime\.launcher
 
 
@@ -4513,29 +4559,20 @@ YAML value
   rules = [
     {
       cond = {
-        rtld = "nix";
+        rtld = "any";
       };
       default = {
         prepend = [
           {
             saved = "libpath";
           }
-        ];
-      };
-      libpath = {
-        save = true;
-      };
-    }
-    {
-      cond = {
-        rtld = "normal";
-      };
-      default = {
-        prepend = [
           {
             dir = "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib";
           }
         ];
+      };
+      libpath = {
+        save = true;
       };
     }
   ];
@@ -5263,6 +5300,27 @@ lazy attribute set of string
 
 *Declared by:*
  - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.glibcTunables
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of string
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [glibc-tunables\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.glibcTunables, via option perSystem\.ml-ops\.common](flake-modules/glibc-tunables.nix)
 
 
 
@@ -6377,8 +6435,6 @@ unspecified value
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.service\.spec\.selector\."app\.kubernetes\.io/namespace"
 
-
-
 This option has no description\.
 
 
@@ -6460,6 +6516,8 @@ package
 
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmUninstall\.overridden-package
+
+
 
 This option has no description\.
 
@@ -7151,29 +7209,20 @@ YAML value
   rules = [
     {
       cond = {
-        rtld = "nix";
+        rtld = "any";
       };
       default = {
         prepend = [
           {
             saved = "libpath";
           }
-        ];
-      };
-      libpath = {
-        save = true;
-      };
-    }
-    {
-      cond = {
-        rtld = "normal";
-      };
-      default = {
-        prepend = [
           {
             dir = "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib";
           }
         ];
+      };
+      libpath = {
+        save = true;
       };
     }
   ];

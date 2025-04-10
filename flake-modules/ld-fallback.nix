@@ -2,11 +2,13 @@ topLevel@{ flake-parts-lib, inputs, ... }:
 {
   imports = [
     ./common.nix
+    ./glibc-tunables.nix
     inputs.flake-parts.flakeModules.flakeModules
   ];
   flake.flakeModules.ldFallback = {
     imports = [
       topLevel.config.flake.flakeModules.common
+      topLevel.config.flake.flakeModules.glibcTunables
     ];
     options.perSystem = flake-parts-lib.mkPerSystemOption (
       {
@@ -21,6 +23,9 @@ topLevel@{ flake-parts-lib, inputs, ... }:
       in
       {
         ml-ops.common = common: {
+          # Workaround for https://sourceware.org/bugzilla/show_bug.cgi?id=31991
+          config.glibcTunables."glibc.rtld.optional_static_tls" = "2000";
+
           options.ldFallback.libraries = lib.mkOption {
             type = lib.types.listOf lib.types.path;
           };
