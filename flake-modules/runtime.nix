@@ -26,6 +26,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
               };
               config.devenvShellModule.name = runtime.config.name;
               config.devenvShellModule.devenv.root = "/env";
+              config.devenvShellModule.process.managers.process-compose.tui.enable = false;
               options.launcher = lib.mkOption {
                 type = lib.types.deferredModuleWith {
                   staticModules = [
