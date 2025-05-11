@@ -8,7 +8,7 @@
       "flakes"
       "repl-flake"
     ];
-    nix.settings.trusted-users = [
+    nix.settings.extra-trusted-users = [
       "@users" # Trust all normal users
     ];
   };
