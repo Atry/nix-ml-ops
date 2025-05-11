@@ -116,10 +116,12 @@ module
  - [kubernetes-job\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesJob](flake-modules/kubernetes-job.nix)
  - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes](flake-modules/kubernetes.nix)
  - [jobs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.jobs](flake-modules/jobs.nix)
+ - [glibc-tunables\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.glibcTunables](flake-modules/glibc-tunables.nix)
  - [gke-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.gkeCredential](flake-modules/gke-credential.nix)
  - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
  - [devenv-python-with-libstdc++\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devenvPythonWithLibstdcxx](flake-modules/devenv-python-with-libstdc++.nix)
  - [devcontainer-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainerPoetry](flake-modules/devcontainer-poetry.nix)
+ - [devcontainer-nixos-rebuild\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainerNixosRebuild](flake-modules/devcontainer-nixos-rebuild.nix)
  - [devcontainer-nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainerNix](flake-modules/devcontainer-nix.nix)
  - [devcontainer-gcp-cli-tools\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainerGcpCliTools](flake-modules/devcontainer-gcp-cli-tools.nix)
  - [devcontainer-azure-cli-tools\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainerAzureCliTools](flake-modules/devcontainer-azure-cli-tools.nix)
@@ -381,6 +383,43 @@ This option has no description\.
 *Type:*
 list of package
 
+
+
+*Default:*
+
+```
+[
+  pkgs.cudaPackages.cuda_nvcc
+  pkgs.cudaPackages.cudatoolkit
+  pkgs.cudaPackages.cuda_cudart.lib
+  pkgs.cudaPackages.libcublas
+  pkgs.cudaPackages.nccl
+  pkgs.cudaPackages.cudnn
+]
+
+```
+
+*Declared by:*
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
+
+
+
+## perSystem\.ml-ops\.devcontainer\.cuda\.cudaPackages
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of package
+
+
+
+*Default:*
+` pkgs.cudaPackages `
+
 *Declared by:*
  - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
 
@@ -486,6 +525,27 @@ list of string
 
 
 
+## perSystem\.ml-ops\.devcontainer\.glibcTunables
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of string
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [glibc-tunables\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.glibcTunables, via option perSystem\.ml-ops\.common](flake-modules/glibc-tunables.nix)
+
+
+
 ## perSystem\.ml-ops\.devcontainer\.inputsGenerator
 
 
@@ -528,6 +588,46 @@ boolean
 
 
 
+## perSystem\.ml-ops\.devcontainer\.ldFallback\.lasmConfig
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+YAML value
+
+
+
+*Default:*
+
+```
+{
+  rules = [
+    {
+      cond.rtld = "any";
+      libpath = {
+        save = true;
+      };
+      default = {
+        prepend = [
+          { saved = "libpath"; }
+          { dir = cfg.path; }
+        ];
+      };
+    }
+  ];
+}
+
+```
+
+*Declared by:*
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
 ## perSystem\.ml-ops\.devcontainer\.ldFallback\.libaudit
 
 
@@ -537,12 +637,12 @@ This option has no description\.
 
 
 *Type:*
-package
+path
 
 
 
 *Default:*
-` <derivation libaudit.so> `
+` "/nix/store/2cnkqwwxnvjnycbxnyh93gfiwysfzw07-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -579,7 +679,35 @@ path
 
 
 *Default:*
-` "/nix/store/l4lmlsn4jjrqs667sfar12b8bidwqav7-ld-fallback-path/lib" `
+
+```
+pkgs.symlinkJoin {
+  name = "ld-fallback-path";
+  paths = cfg.libraries;
+} + "/lib"
+
+```
+
+*Declared by:*
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.devcontainer\.ldFallback\.preferRunpathOverLdLibraryPath
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` true `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -668,7 +796,7 @@ The list of paths to be added to the ` NIX_LD_LIBRARY_PATH ` environment variabl
 
 This option should always be kept empty\. Set ` flakeModules.ldFallback.libraries ` instead when you want any non-empty library path\. See discussion at https://github\.com/NixOS/nixpkgs/pull/248547\#issuecomment-1995469926 about why nix-ld is not a good idea for libraries used in a project\.
 
-Note that ` nix-ld-rs ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld ` or ` nix-ld-rs `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
+Note that ` nix-ld ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
 
 
 
@@ -831,7 +959,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.11.9> `
+` <derivation python3-3.12.8> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -1444,6 +1572,43 @@ This option has no description\.
 *Type:*
 list of package
 
+
+
+*Default:*
+
+```
+[
+  pkgs.cudaPackages.cuda_nvcc
+  pkgs.cudaPackages.cudatoolkit
+  pkgs.cudaPackages.cuda_cudart.lib
+  pkgs.cudaPackages.libcublas
+  pkgs.cudaPackages.nccl
+  pkgs.cudaPackages.cudnn
+]
+
+```
+
+*Declared by:*
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.cuda\.cudaPackages
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of package
+
+
+
+*Default:*
+` pkgs.cudaPackages `
+
 *Declared by:*
  - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
 
@@ -1514,6 +1679,27 @@ lazy attribute set of string
 
 *Declared by:*
  - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.glibcTunables
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of string
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [glibc-tunables\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.glibcTunables, via option perSystem\.ml-ops\.common](flake-modules/glibc-tunables.nix)
 
 
 
@@ -1960,8 +2146,6 @@ string
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helm-chart
 
-
-
 This option has no description\.
 
 
@@ -2080,6 +2264,8 @@ list of function that evaluates to a(n) package
 
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmReleaseName
+
+
 
 This option has no description\.
 
@@ -2575,6 +2761,27 @@ package
 
 *Declared by:*
  - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmUpgrade\.extraFlags
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+strings concatenated with " "
+
+
+
+*Default:*
+` "" `
+
+*Declared by:*
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -3168,6 +3375,46 @@ boolean
 
 
 
+## perSystem\.ml-ops\.jobs\.\<name>\.ldFallback\.lasmConfig
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+YAML value
+
+
+
+*Default:*
+
+```
+{
+  rules = [
+    {
+      cond.rtld = "any";
+      libpath = {
+        save = true;
+      };
+      default = {
+        prepend = [
+          { saved = "libpath"; }
+          { dir = cfg.path; }
+        ];
+      };
+    }
+  ];
+}
+
+```
+
+*Declared by:*
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
 ## perSystem\.ml-ops\.jobs\.\<name>\.ldFallback\.libaudit
 
 
@@ -3177,12 +3424,12 @@ This option has no description\.
 
 
 *Type:*
-package
+path
 
 
 
 *Default:*
-` <derivation libaudit.so> `
+` "/nix/store/2cnkqwwxnvjnycbxnyh93gfiwysfzw07-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -3219,7 +3466,35 @@ path
 
 
 *Default:*
-` "/nix/store/l4lmlsn4jjrqs667sfar12b8bidwqav7-ld-fallback-path/lib" `
+
+```
+pkgs.symlinkJoin {
+  name = "ld-fallback-path";
+  paths = cfg.libraries;
+} + "/lib"
+
+```
+
+*Declared by:*
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.ldFallback\.preferRunpathOverLdLibraryPath
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` true `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -3276,7 +3551,7 @@ The list of paths to be added to the ` NIX_LD_LIBRARY_PATH ` environment variabl
 
 This option should always be kept empty\. Set ` flakeModules.ldFallback.libraries ` instead when you want any non-empty library path\. See discussion at https://github\.com/NixOS/nixpkgs/pull/248547\#issuecomment-1995469926 about why nix-ld is not a good idea for libraries used in a project\.
 
-Note that ` nix-ld-rs ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld ` or ` nix-ld-rs `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
+Note that ` nix-ld ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
 
 
 
@@ -3402,7 +3677,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.11.9> `
+` <derivation python3-3.12.8> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -3451,6 +3726,27 @@ attribute set of anything
 
 
 
+## perSystem\.ml-ops\.jobs\.\<name>\.poetryApplicationDependencyEnv
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+package
+
+
+
+*Default:*
+` poetryApplication.dependencyEnv.override { ignoreCollisions = true; } `
+
+*Declared by:*
+ - [poetry2nix-application\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nixApplication, via option perSystem\.ml-ops\.runtime](flake-modules/poetry2nix-application.nix)
+
+
+
 ## perSystem\.ml-ops\.jobs\.\<name>\.poetryEnv
 
 
@@ -3465,7 +3761,7 @@ package
 
 
 *Default:*
-` <derivation python3-3.11.9-env> `
+` <derivation python3-3.12.8-env> `
 
 *Declared by:*
  - [python-envs-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
@@ -3983,8 +4279,6 @@ applied ` base-package ` with ` pipe `
 
 ## perSystem\.ml-ops\.overridablePackage\.pipe
 
-
-
 This option has no description\.
 
 
@@ -4054,6 +4348,43 @@ This option has no description\.
 
 *Type:*
 list of package
+
+
+
+*Default:*
+
+```
+[
+  pkgs.cudaPackages.cuda_nvcc
+  pkgs.cudaPackages.cudatoolkit
+  pkgs.cudaPackages.cuda_cudart.lib
+  pkgs.cudaPackages.libcublas
+  pkgs.cudaPackages.nccl
+  pkgs.cudaPackages.cudnn
+]
+
+```
+
+*Declared by:*
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
+
+
+
+## perSystem\.ml-ops\.runtime\.cuda\.cudaPackages
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of package
+
+
+
+*Default:*
+` pkgs.cudaPackages `
 
 *Declared by:*
  - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
@@ -4128,6 +4459,27 @@ lazy attribute set of string
 
 
 
+## perSystem\.ml-ops\.runtime\.glibcTunables
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of string
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [glibc-tunables\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.glibcTunables, via option perSystem\.ml-ops\.common](flake-modules/glibc-tunables.nix)
+
+
+
 ## perSystem\.ml-ops\.runtime\.launcher
 
 
@@ -4191,19 +4543,61 @@ boolean
 
 
 
-## perSystem\.ml-ops\.runtime\.ldFallback\.libaudit
+## perSystem\.ml-ops\.runtime\.ldFallback\.lasmConfig
+
+
 
 This option has no description\.
 
 
 
 *Type:*
-package
+YAML value
 
 
 
 *Default:*
-` <derivation libaudit.so> `
+
+```
+{
+  rules = [
+    {
+      cond.rtld = "any";
+      libpath = {
+        save = true;
+      };
+      default = {
+        prepend = [
+          { saved = "libpath"; }
+          { dir = cfg.path; }
+        ];
+      };
+    }
+  ];
+}
+
+```
+
+*Declared by:*
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.runtime\.ldFallback\.libaudit
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+path
+
+
+
+*Default:*
+` "/nix/store/2cnkqwwxnvjnycbxnyh93gfiwysfzw07-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -4240,7 +4634,35 @@ path
 
 
 *Default:*
-` "/nix/store/l4lmlsn4jjrqs667sfar12b8bidwqav7-ld-fallback-path/lib" `
+
+```
+pkgs.symlinkJoin {
+  name = "ld-fallback-path";
+  paths = cfg.libraries;
+} + "/lib"
+
+```
+
+*Declared by:*
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.runtime\.ldFallback\.preferRunpathOverLdLibraryPath
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` true `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -4297,7 +4719,7 @@ The list of paths to be added to the ` NIX_LD_LIBRARY_PATH ` environment variabl
 
 This option should always be kept empty\. Set ` flakeModules.ldFallback.libraries ` instead when you want any non-empty library path\. See discussion at https://github\.com/NixOS/nixpkgs/pull/248547\#issuecomment-1995469926 about why nix-ld is not a good idea for libraries used in a project\.
 
-Note that ` nix-ld-rs ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld ` or ` nix-ld-rs `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
+Note that ` nix-ld ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
 
 
 
@@ -4423,7 +4845,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.11.9> `
+` <derivation python3-3.12.8> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -4777,6 +5199,43 @@ This option has no description\.
 *Type:*
 list of package
 
+
+
+*Default:*
+
+```
+[
+  pkgs.cudaPackages.cuda_nvcc
+  pkgs.cudaPackages.cudatoolkit
+  pkgs.cudaPackages.cuda_cudart.lib
+  pkgs.cudaPackages.libcublas
+  pkgs.cudaPackages.nccl
+  pkgs.cudaPackages.cudnn
+]
+
+```
+
+*Declared by:*
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.cuda\.cudaPackages
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of package
+
+
+
+*Default:*
+` pkgs.cudaPackages `
+
 *Declared by:*
  - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
 
@@ -4847,6 +5306,27 @@ lazy attribute set of string
 
 *Declared by:*
  - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.glibcTunables
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of string
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [glibc-tunables\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.glibcTunables, via option perSystem\.ml-ops\.common](flake-modules/glibc-tunables.nix)
 
 
 
@@ -5468,6 +5948,11 @@ This option has no description\.
 *Type:*
 attribute set of attribute set of anything
 
+
+
+*Default:*
+` { } `
+
 *Declared by:*
  - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
@@ -5956,8 +6441,6 @@ unspecified value
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.service\.spec\.selector\."app\.kubernetes\.io/namespace"
 
-
-
 This option has no description\.
 
 
@@ -6119,6 +6602,27 @@ package
 
 *Declared by:*
  - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmUpgrade\.extraFlags
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+strings concatenated with " "
+
+
+
+*Default:*
+` "" `
+
+*Declared by:*
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6286,6 +6790,8 @@ unspecified value
 
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests\.\<name>\.metadata\.name
+
+
 
 This option has no description\.
 
@@ -6689,6 +7195,46 @@ boolean
 
 
 
+## perSystem\.ml-ops\.services\.\<name>\.ldFallback\.lasmConfig
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+YAML value
+
+
+
+*Default:*
+
+```
+{
+  rules = [
+    {
+      cond.rtld = "any";
+      libpath = {
+        save = true;
+      };
+      default = {
+        prepend = [
+          { saved = "libpath"; }
+          { dir = cfg.path; }
+        ];
+      };
+    }
+  ];
+}
+
+```
+
+*Declared by:*
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
 ## perSystem\.ml-ops\.services\.\<name>\.ldFallback\.libaudit
 
 
@@ -6698,12 +7244,12 @@ This option has no description\.
 
 
 *Type:*
-package
+path
 
 
 
 *Default:*
-` <derivation libaudit.so> `
+` "/nix/store/2cnkqwwxnvjnycbxnyh93gfiwysfzw07-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -6740,7 +7286,35 @@ path
 
 
 *Default:*
-` "/nix/store/l4lmlsn4jjrqs667sfar12b8bidwqav7-ld-fallback-path/lib" `
+
+```
+pkgs.symlinkJoin {
+  name = "ld-fallback-path";
+  paths = cfg.libraries;
+} + "/lib"
+
+```
+
+*Declared by:*
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.ldFallback\.preferRunpathOverLdLibraryPath
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` true `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -6797,7 +7371,7 @@ The list of paths to be added to the ` NIX_LD_LIBRARY_PATH ` environment variabl
 
 This option should always be kept empty\. Set ` flakeModules.ldFallback.libraries ` instead when you want any non-empty library path\. See discussion at https://github\.com/NixOS/nixpkgs/pull/248547\#issuecomment-1995469926 about why nix-ld is not a good idea for libraries used in a project\.
 
-Note that ` nix-ld-rs ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld ` or ` nix-ld-rs `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
+Note that ` nix-ld ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
 
 
 
@@ -6923,7 +7497,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.11.9> `
+` <derivation python3-3.12.8> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -6972,6 +7546,27 @@ attribute set of anything
 
 
 
+## perSystem\.ml-ops\.services\.\<name>\.poetryApplicationDependencyEnv
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+package
+
+
+
+*Default:*
+` poetryApplication.dependencyEnv.override { ignoreCollisions = true; } `
+
+*Declared by:*
+ - [poetry2nix-application\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nixApplication, via option perSystem\.ml-ops\.runtime](flake-modules/poetry2nix-application.nix)
+
+
+
 ## perSystem\.ml-ops\.services\.\<name>\.poetryEnv
 
 
@@ -6986,7 +7581,7 @@ package
 
 
 *Default:*
-` <derivation python3-3.11.9-env> `
+` <derivation python3-3.12.8-env> `
 
 *Declared by:*
  - [python-envs-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)

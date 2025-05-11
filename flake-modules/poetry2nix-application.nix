@@ -27,10 +27,15 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
             defaultText = lib.literalExpression "mkPoetryApplication poetryApplicationArgs";
             default = runtime.config.poetry2nix.poetry2nixLib.mkPoetryApplication runtime.config.poetryApplicationArgs;
           };
-          config.devenvShellModule.packages = lib.mkIf (builtins.pathExists "${flakeModule.self}/poetry.lock") [
-            (runtime.config.poetryApplication.dependencyEnv.override {
+          options.poetryApplicationDependencyEnv = lib.mkOption {
+            type = lib.types.package;
+            defaultText = lib.literalExpression "poetryApplication.dependencyEnv.override { ignoreCollisions = true; }";
+            default = runtime.config.poetryApplication.dependencyEnv.override {
               ignoreCollisions = true;
-            })
+            };
+          };
+          config.devenvShellModule.packages = lib.mkIf (builtins.pathExists "${flakeModule.self}/poetry.lock") [
+            runtime.config.poetryApplicationDependencyEnv
           ];
         };
       });

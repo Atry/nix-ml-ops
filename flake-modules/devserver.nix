@@ -124,7 +124,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
               inherit system;
               format = "gce";
               modules = [
-                topLevel.config.flake.nixosModules.devserver 
+                topLevel.config.flake.nixosModules.devserver
                 { virtualisation.googleComputeImage.efi = true; }
               ];
             };

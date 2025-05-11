@@ -47,7 +47,7 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
           config.poetry2nix.args = {
             preferWheels = lib.mkDefault true;
             python = common.config.poetry2nix.python;
-            groups = [ ];
+            groups = [ "main" ];
           } // (lib.optionalAttrs (builtins.compareVersions builtins.nixVersion "2.20" == -1) {
             # For nix 2.19 or earlier, use flake's self input to determine projectDir.
             # This approach will lead to stack overflow in nix 2.20 or later due to https://github.com/NixOS/nix/issues/9672

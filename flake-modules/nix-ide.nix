@@ -12,15 +12,8 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
     options.perSystem = flake-parts-lib.mkPerSystemOption ({ config, pkgs, lib, system, ... }: {
       ml-ops.devcontainer = {
         nixago.requests = {
-          ".vscode/settings.json".data = {
-            "nix.enableLanguageServer" = true;
-            "nix.serverPath" = "nil";
-            "nix.serverSettings" = {
-              nil.formatting.command = lib.mkForce ["nixpkgs-fmt"];
-            };
-          };
           ".vscode/extensions.json".data = {
-            "recommendations" = [
+            recommendations = [
               "jnoortheen.nix-ide"
             ];
           };
@@ -28,7 +21,7 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
         devenvShellModule = {
           packages = [
             pkgs.nil
-            pkgs.nixpkgs-fmt 
+            pkgs.nixfmt-rfc-style
           ];
           languages.nix.enable = true;
         };
