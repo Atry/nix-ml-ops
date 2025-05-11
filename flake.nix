@@ -26,7 +26,7 @@
     nixpkgs.url = "nixpkgs/nixos-24.11";
 
     flake-parts.url = "github:Atry/flake-parts/key";
-    flake-parts.inputs.nixpkgs-lib.url = "github:nix-community/nixpkgs.lib";
+    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     systems.url = "github:nix-systems/default";
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
