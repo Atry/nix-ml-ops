@@ -39,6 +39,12 @@ topLevel@{ flake-parts-lib, inputs, ... }:
                 paths = common.config.ldFallback.libraries;
               }
             }/lib";
+            defaultText = lib.literalExpression ''
+              pkgs.symlinkJoin {
+                name = "ld-fallback-path";
+                paths = cfg.libraries;
+              } + "/lib"
+            '';
           };
 
           options.ldFallback.enablelogging = lib.mkEnableOption "logging";
@@ -75,6 +81,24 @@ topLevel@{ flake-parts-lib, inputs, ... }:
                 }
               ];
             };
+            defaultText = lib.literalExpression ''
+              {
+                rules = [
+                  {
+                    cond.rtld = "any";
+                    libpath = {
+                      save = true;
+                    };
+                    default = {
+                      prepend = [
+                        { saved = "libpath"; }
+                        { dir = cfg.path; }
+                      ];
+                    };
+                  }
+                ];
+              }
+            '';
           };
 
           config.environmentVariables = {

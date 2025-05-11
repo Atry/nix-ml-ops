@@ -607,25 +607,20 @@ YAML value
 {
   rules = [
     {
-      cond = {
-        rtld = "any";
+      cond.rtld = "any";
+      libpath = {
+        save = true;
       };
       default = {
         prepend = [
-          {
-            saved = "libpath";
-          }
-          {
-            dir = "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib";
-          }
+          { saved = "libpath"; }
+          { dir = cfg.path; }
         ];
-      };
-      libpath = {
-        save = true;
       };
     }
   ];
 }
+
 ```
 
 *Declared by:*
@@ -684,7 +679,14 @@ path
 
 
 *Default:*
-` "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib" `
+
+```
+pkgs.symlinkJoin {
+  name = "ld-fallback-path";
+  paths = cfg.libraries;
+} + "/lib"
+
+```
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -3392,25 +3394,20 @@ YAML value
 {
   rules = [
     {
-      cond = {
-        rtld = "any";
+      cond.rtld = "any";
+      libpath = {
+        save = true;
       };
       default = {
         prepend = [
-          {
-            saved = "libpath";
-          }
-          {
-            dir = "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib";
-          }
+          { saved = "libpath"; }
+          { dir = cfg.path; }
         ];
-      };
-      libpath = {
-        save = true;
       };
     }
   ];
 }
+
 ```
 
 *Declared by:*
@@ -3469,7 +3466,14 @@ path
 
 
 *Default:*
-` "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib" `
+
+```
+pkgs.symlinkJoin {
+  name = "ld-fallback-path";
+  paths = cfg.libraries;
+} + "/lib"
+
+```
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -4558,25 +4562,20 @@ YAML value
 {
   rules = [
     {
-      cond = {
-        rtld = "any";
+      cond.rtld = "any";
+      libpath = {
+        save = true;
       };
       default = {
         prepend = [
-          {
-            saved = "libpath";
-          }
-          {
-            dir = "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib";
-          }
+          { saved = "libpath"; }
+          { dir = cfg.path; }
         ];
-      };
-      libpath = {
-        save = true;
       };
     }
   ];
 }
+
 ```
 
 *Declared by:*
@@ -4635,7 +4634,14 @@ path
 
 
 *Default:*
-` "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib" `
+
+```
+pkgs.symlinkJoin {
+  name = "ld-fallback-path";
+  paths = cfg.libraries;
+} + "/lib"
+
+```
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -7208,25 +7214,20 @@ YAML value
 {
   rules = [
     {
-      cond = {
-        rtld = "any";
+      cond.rtld = "any";
+      libpath = {
+        save = true;
       };
       default = {
         prepend = [
-          {
-            saved = "libpath";
-          }
-          {
-            dir = "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib";
-          }
+          { saved = "libpath"; }
+          { dir = cfg.path; }
         ];
-      };
-      libpath = {
-        save = true;
       };
     }
   ];
 }
+
 ```
 
 *Declared by:*
@@ -7285,7 +7286,14 @@ path
 
 
 *Default:*
-` "/nix/store/yv9d4q0l2qlcr4nvi7m00axq9pwfc4s1-ld-fallback-path/lib" `
+
+```
+pkgs.symlinkJoin {
+  name = "ld-fallback-path";
+  paths = cfg.libraries;
+} + "/lib"
+
+```
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
