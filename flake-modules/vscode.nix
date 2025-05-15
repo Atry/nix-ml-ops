@@ -12,9 +12,7 @@ topLevel@{ flake-parts-lib, lib, ... }: {
         settingsJson = ".vscode/settings.json";
 
         mkRecursiveDefault = value:
-          if builtins.isList value
-          then builtins.map mkRecursiveDefault value
-          else if builtins.isAttrs value
+          if builtins.isAttrs value
           then lib.attrsets.mapAttrs (name: mkRecursiveDefault) value
           else lib.mkDefault value;
       in
