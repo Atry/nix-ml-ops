@@ -101,7 +101,7 @@ topLevel@{ flake-parts-lib, inputs, ... }:
             '';
           };
 
-          config.environmentVariables = {
+          config.environmentVariables = lib.mkIf (system != "aarch64-darwin") {
             LD_AUDIT = toString common.config.ldFallback.libaudit;
             LD_AUDIT_SEARCH_MOD_CONFIG = toString (
               yamlFormat.generate "lasm-config.yaml" common.config.ldFallback.lasmConfig
