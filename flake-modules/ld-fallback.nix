@@ -15,7 +15,6 @@ topLevel@{ flake-parts-lib, inputs, ... }:
         system,
         lib,
         pkgs,
-        inputs',
         ...
       }:
       let
@@ -51,7 +50,7 @@ topLevel@{ flake-parts-lib, inputs, ... }:
 
           options.ldFallback.libaudit = lib.mkOption {
             type = lib.types.path;
-            default = "${inputs'.lasm.packages.default}/lib/libld-audit-search-mod.so";
+            default = "${inputs.lasm.packages.${system}.default}/lib/libld-audit-search-mod.so";
           };
 
           options.ldFallback.preferRunpathOverLdLibraryPath = lib.mkOption {
