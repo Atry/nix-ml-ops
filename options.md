@@ -642,7 +642,11 @@ absolute path
 
 
 *Default:*
-` "/nix/store/hrgrxs8ml7gm85x07sa8sjpazvw8lw03-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
+
+```
+${inputs.lasm.packages.${system}.default}/lib/libld-audit-search-mod.so
+
+```
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -3428,7 +3432,11 @@ absolute path
 
 
 *Default:*
-` "/nix/store/hrgrxs8ml7gm85x07sa8sjpazvw8lw03-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
+
+```
+${inputs.lasm.packages.${system}.default}/lib/libld-audit-search-mod.so
+
+```
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -4595,7 +4603,11 @@ absolute path
 
 
 *Default:*
-` "/nix/store/hrgrxs8ml7gm85x07sa8sjpazvw8lw03-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
+
+```
+${inputs.lasm.packages.${system}.default}/lib/libld-audit-search-mod.so
+
+```
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -7246,7 +7258,11 @@ absolute path
 
 
 *Default:*
-` "/nix/store/hrgrxs8ml7gm85x07sa8sjpazvw8lw03-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
+
+```
+${inputs.lasm.packages.${system}.default}/lib/libld-audit-search-mod.so
+
+```
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
