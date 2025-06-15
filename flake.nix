@@ -23,7 +23,7 @@
     # Used by mach-nix, which is not compatible with the latest nixpkgs-unstable
     nixpkgs_22_05.url = "nixpkgs/nixos-22.05";
 
-    nixpkgs.url = "nixpkgs/nixos-24.11";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
 
     flake-parts.url = "github:Atry/flake-parts/key";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -41,7 +41,6 @@
       # url = "github:cachix/devenv";
       url = "github:Atry/devenv";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.pre-commit-hooks.follows = "pre-commit-hooks";
     };
     mk-shell-bin = {
       # Use a forked version of mk-shell-bin that includes a fix for declaring associative arrays

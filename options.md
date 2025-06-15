@@ -637,12 +637,12 @@ This option has no description\.
 
 
 *Type:*
-path
+absolute path
 
 
 
 *Default:*
-` "/nix/store/2cnkqwwxnvjnycbxnyh93gfiwysfzw07-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
+` "/nix/store/hrgrxs8ml7gm85x07sa8sjpazvw8lw03-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -658,7 +658,7 @@ This option has no description\.
 
 
 *Type:*
-list of path
+list of absolute path
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -674,7 +674,7 @@ This option has no description\.
 
 
 *Type:*
-path
+absolute path
 
 
 
@@ -801,7 +801,7 @@ Note that ` nix-ld ` is still a good idea for executing non-Nix binaries in the 
 
 
 *Type:*
-list of path
+list of absolute path
 
 
 
@@ -931,7 +931,6 @@ unspecified value
   mkPoetryScriptsPackage = <function, args: {projectDir?, pyProject?, pyproject?, python?, scripts?}>;
   newScope = <function>;
   overrideScope = <function>;
-  overrideScope' = <function>;
   overrides = {
     withDefaults = <function>;
     withoutDefaults = <function>;
@@ -959,7 +958,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.12.8> `
+` <derivation python3-3.12.10> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -3424,12 +3423,12 @@ This option has no description\.
 
 
 *Type:*
-path
+absolute path
 
 
 
 *Default:*
-` "/nix/store/2cnkqwwxnvjnycbxnyh93gfiwysfzw07-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
+` "/nix/store/hrgrxs8ml7gm85x07sa8sjpazvw8lw03-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -3445,7 +3444,7 @@ This option has no description\.
 
 
 *Type:*
-list of path
+list of absolute path
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -3461,7 +3460,7 @@ This option has no description\.
 
 
 *Type:*
-path
+absolute path
 
 
 
@@ -3556,7 +3555,7 @@ Note that ` nix-ld ` is still a good idea for executing non-Nix binaries in the 
 
 
 *Type:*
-list of path
+list of absolute path
 
 
 
@@ -3649,7 +3648,6 @@ unspecified value
   mkPoetryScriptsPackage = <function, args: {projectDir?, pyProject?, pyproject?, python?, scripts?}>;
   newScope = <function>;
   overrideScope = <function>;
-  overrideScope' = <function>;
   overrides = {
     withDefaults = <function>;
     withoutDefaults = <function>;
@@ -3677,7 +3675,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.12.8> `
+` <derivation python3-3.12.10> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -3761,7 +3759,7 @@ package
 
 
 *Default:*
-` <derivation python3-3.12.8-env> `
+` <derivation python3-3.12.10-env> `
 
 *Declared by:*
  - [python-envs-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
@@ -4592,12 +4590,12 @@ This option has no description\.
 
 
 *Type:*
-path
+absolute path
 
 
 
 *Default:*
-` "/nix/store/2cnkqwwxnvjnycbxnyh93gfiwysfzw07-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
+` "/nix/store/hrgrxs8ml7gm85x07sa8sjpazvw8lw03-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -4613,7 +4611,7 @@ This option has no description\.
 
 
 *Type:*
-list of path
+list of absolute path
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -4629,7 +4627,7 @@ This option has no description\.
 
 
 *Type:*
-path
+absolute path
 
 
 
@@ -4724,7 +4722,7 @@ Note that ` nix-ld ` is still a good idea for executing non-Nix binaries in the 
 
 
 *Type:*
-list of path
+list of absolute path
 
 
 
@@ -4817,7 +4815,6 @@ unspecified value
   mkPoetryScriptsPackage = <function, args: {projectDir?, pyProject?, pyproject?, python?, scripts?}>;
   newScope = <function>;
   overrideScope = <function>;
-  overrideScope' = <function>;
   overrides = {
     withDefaults = <function>;
     withoutDefaults = <function>;
@@ -4845,7 +4842,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.12.8> `
+` <derivation python3-3.12.10> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -7244,12 +7241,12 @@ This option has no description\.
 
 
 *Type:*
-path
+absolute path
 
 
 
 *Default:*
-` "/nix/store/2cnkqwwxnvjnycbxnyh93gfiwysfzw07-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
+` "/nix/store/hrgrxs8ml7gm85x07sa8sjpazvw8lw03-ld-audit-search-mod/lib/libld-audit-search-mod.so" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -7265,7 +7262,7 @@ This option has no description\.
 
 
 *Type:*
-list of path
+list of absolute path
 
 *Declared by:*
  - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -7281,7 +7278,7 @@ This option has no description\.
 
 
 *Type:*
-path
+absolute path
 
 
 
@@ -7376,7 +7373,7 @@ Note that ` nix-ld ` is still a good idea for executing non-Nix binaries in the 
 
 
 *Type:*
-list of path
+list of absolute path
 
 
 
@@ -7469,7 +7466,6 @@ unspecified value
   mkPoetryScriptsPackage = <function, args: {projectDir?, pyProject?, pyproject?, python?, scripts?}>;
   newScope = <function>;
   overrideScope = <function>;
-  overrideScope' = <function>;
   overrides = {
     withDefaults = <function>;
     withoutDefaults = <function>;
@@ -7497,7 +7493,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.12.8> `
+` <derivation python3-3.12.10> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -7581,7 +7577,7 @@ package
 
 
 *Default:*
-` <derivation python3-3.12.8-env> `
+` <derivation python3-3.12.10-env> `
 
 *Declared by:*
  - [python-envs-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
