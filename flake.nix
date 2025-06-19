@@ -1,5 +1,6 @@
 {
   inputs = {
+    nix.url = "https://flakehub.com/f/DeterminateSystems/nix-src/*";
     devenv-root = {
       url = "file+file:///dev/null";
       flake = false;

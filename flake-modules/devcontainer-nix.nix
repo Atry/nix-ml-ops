@@ -34,9 +34,9 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
               esac
 
               if [ -z "''${NUMBER_OF_SUB_COMMANDS+x}" ]; then
-                exec ${lib.getExe pkgs.nixVersions.latest} "$@"
+                exec ${lib.getExe topLevel.inputs.nix.packages."${pkgs.stdenv.system}".default} "$@"
               else
-                exec ${lib.getExe pkgs.nixVersions.latest} "''${@:1:$NUMBER_OF_SUB_COMMANDS}" ${lib.escapeShellArgs devenvShellModule.config.devenv.flakeArgs} "''${@:$(($NUMBER_OF_SUB_COMMANDS+1))}"
+                exec ${lib.getExe topLevel.inputs.nix.packages."${pkgs.stdenv.system}".default} "''${@:1:$NUMBER_OF_SUB_COMMANDS}" ${lib.escapeShellArgs devenvShellModule.config.devenv.flakeArgs} "''${@:$(($NUMBER_OF_SUB_COMMANDS+1))}"
               fi 
             '';
           };
