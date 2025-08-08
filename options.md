@@ -259,7 +259,7 @@ package
 
 
 *Example:*
-` <derivation hello-2.12.1> `
+` <derivation hello-2.12.2> `
 
 *Declared by:*
  - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
@@ -597,7 +597,7 @@ This option has no description\.
 
 
 *Type:*
-YAML value
+YAML 1\.1 value
 
 
 
@@ -644,7 +644,7 @@ absolute path
 *Default:*
 
 ```
-${inputs.lasm.packages.${system}.default}/lib/libld-audit-search-mod.so
+${pkgs.ld-audit-search-mod}/lib/libld-audit-search-mod.so
 
 ```
 
@@ -962,7 +962,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.12.10> `
+` <derivation python3-3.13.5> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -1041,7 +1041,7 @@ package
 
 
 *Example:*
-` <derivation hello-2.12.1> `
+` <derivation hello-2.12.2> `
 
 *Declared by:*
  - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
@@ -2217,7 +2217,7 @@ package
 
 
 *Example:*
-` <derivation hello-2.12.1> `
+` <derivation hello-2.12.2> `
 
 *Declared by:*
  - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
@@ -2676,7 +2676,7 @@ package
 
 
 *Example:*
-` <derivation hello-2.12.1> `
+` <derivation hello-2.12.2> `
 
 *Declared by:*
  - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
@@ -2760,7 +2760,7 @@ package
 
 
 *Example:*
-` <derivation hello-2.12.1> `
+` <derivation hello-2.12.2> `
 
 *Declared by:*
  - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
@@ -3208,7 +3208,7 @@ package
 
 
 *Example:*
-` <derivation hello-2.12.1> `
+` <derivation hello-2.12.2> `
 
 *Declared by:*
  - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
@@ -3387,7 +3387,7 @@ This option has no description\.
 
 
 *Type:*
-YAML value
+YAML 1\.1 value
 
 
 
@@ -3434,7 +3434,7 @@ absolute path
 *Default:*
 
 ```
-${inputs.lasm.packages.${system}.default}/lib/libld-audit-search-mod.so
+${pkgs.ld-audit-search-mod}/lib/libld-audit-search-mod.so
 
 ```
 
@@ -3683,7 +3683,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.12.10> `
+` <derivation python3-3.13.5> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -3767,7 +3767,7 @@ package
 
 
 *Default:*
-` <derivation python3-3.12.10-env> `
+` <derivation python3-3.13.5-env> `
 
 *Declared by:*
  - [python-envs-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
@@ -3867,7 +3867,7 @@ package
 
 
 *Example:*
-` <derivation hello-2.12.1> `
+` <derivation hello-2.12.2> `
 
 *Declared by:*
  - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
@@ -4255,7 +4255,7 @@ package
 
 
 *Example:*
-` <derivation hello-2.12.1> `
+` <derivation hello-2.12.2> `
 
 *Declared by:*
  - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
@@ -4558,7 +4558,7 @@ This option has no description\.
 
 
 *Type:*
-YAML value
+YAML 1\.1 value
 
 
 
@@ -4605,7 +4605,7 @@ absolute path
 *Default:*
 
 ```
-${inputs.lasm.packages.${system}.default}/lib/libld-audit-search-mod.so
+${pkgs.ld-audit-search-mod}/lib/libld-audit-search-mod.so
 
 ```
 
@@ -4854,7 +4854,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.12.10> `
+` <derivation python3-3.13.5> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -4933,7 +4933,7 @@ package
 
 
 *Example:*
-` <derivation hello-2.12.1> `
+` <derivation hello-2.12.2> `
 
 *Declared by:*
  - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
@@ -5852,7 +5852,7 @@ package
 
 
 *Example:*
-` <derivation hello-2.12.1> `
+` <derivation hello-2.12.2> `
 
 *Declared by:*
  - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
@@ -6523,7 +6523,7 @@ package
 
 
 *Example:*
-` <derivation hello-2.12.1> `
+` <derivation hello-2.12.2> `
 
 *Declared by:*
  - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
@@ -6607,7 +6607,7 @@ package
 
 
 *Example:*
-` <derivation hello-2.12.1> `
+` <derivation hello-2.12.2> `
 
 *Declared by:*
  - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
@@ -7055,7 +7055,7 @@ package
 
 
 *Example:*
-` <derivation hello-2.12.1> `
+` <derivation hello-2.12.2> `
 
 *Declared by:*
  - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
@@ -7213,7 +7213,7 @@ This option has no description\.
 
 
 *Type:*
-YAML value
+YAML 1\.1 value
 
 
 
@@ -7260,7 +7260,7 @@ absolute path
 *Default:*
 
 ```
-${inputs.lasm.packages.${system}.default}/lib/libld-audit-search-mod.so
+${pkgs.ld-audit-search-mod}/lib/libld-audit-search-mod.so
 
 ```
 
@@ -7509,7 +7509,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.12.10> `
+` <derivation python3-3.13.5> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -7593,7 +7593,7 @@ package
 
 
 *Default:*
-` <derivation python3-3.12.10-env> `
+` <derivation python3-3.13.5-env> `
 
 *Declared by:*
  - [python-envs-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
@@ -7693,7 +7693,7 @@ package
 
 
 *Example:*
-` <derivation hello-2.12.1> `
+` <derivation hello-2.12.2> `
 
 *Declared by:*
  - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)

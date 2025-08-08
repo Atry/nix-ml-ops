@@ -24,7 +24,7 @@
     # Used by mach-nix, which is not compatible with the latest nixpkgs-unstable
     nixpkgs_22_05.url = "nixpkgs/nixos-22.05";
 
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/master";
 
     flake-parts.url = "github:Atry/flake-parts/key";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -66,7 +66,6 @@
       url = "github:Atry/nix-gl-host";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lasm.url = "github:DDoSolitary/ld-audit-search-mod";
   };
   outputs = inputs: inputs.flake-parts.lib.mkFlake
     {

@@ -50,9 +50,9 @@ topLevel@{ flake-parts-lib, inputs, ... }:
 
           options.ldFallback.libaudit = lib.mkOption {
             type = lib.types.path;
-            default = "${inputs.lasm.packages.${system}.default}/lib/libld-audit-search-mod.so";
+            default = "${pkgs.ld-audit-search-mod}/lib/libld-audit-search-mod.so";
             defaultText = lib.literalExpression ''
-              ''${inputs.lasm.packages.''${system}.default}/lib/libld-audit-search-mod.so
+              ''${pkgs.ld-audit-search-mod}/lib/libld-audit-search-mod.so
             '';
           };
 
