@@ -103,7 +103,11 @@ topLevel@{ flake-parts-lib, inputs, ... }:
             '';
           };
 
-          config.environmentVariables = lib.mkIf (system != "aarch64-darwin") {
+          # LD_AUDIT and its search-mod config are glibc/ELF dynamic-linker
+          # features that exist only on Linux. macOS uses Mach-O and dyld, where
+          # these variables do nothing and `pkgs.ld-audit-search-mod` is not
+          # available (evaluating it fails on x86_64-darwin), so gate on Linux.
+          config.environmentVariables = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
             LD_AUDIT = toString common.config.ldFallback.libaudit;
             LD_AUDIT_SEARCH_MOD_CONFIG = toString (
               yamlFormat.generate "lasm-config.yaml" common.config.ldFallback.lasmConfig
